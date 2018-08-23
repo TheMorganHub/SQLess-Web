@@ -11,7 +11,7 @@
     @stack('css-extras')
     @stack('scripts-extras')
 </head>
-<body>
+<body @yield('body-params')>
 @yield('content')
 </body>
 </html>

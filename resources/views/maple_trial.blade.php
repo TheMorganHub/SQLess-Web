@@ -2,14 +2,6 @@
 @push('css-extras')
     <link rel="stylesheet" href="{{ asset('css/codemirror/codemirror.css') }}">
 @endpush
-@push('scripts-extras')
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/codemirror/codemirror.js') }}"></script>
-    <script src="{{ asset('js/codemirror/active-line.js') }}"></script>
-    <script src="{{ asset('js/codemirror/sql.js') }}"></script>
-@endpush
 @section('content')
     <style>
         body {
@@ -211,12 +203,15 @@
     </div>
     <textarea style="margin: 2px" name="txt_maple" id="sql_editor" spellcheck="false" cols="30" rows="10"
               class="form-control"></textarea>
-
-
     <button class="btn btn-success" id="btn_submit">Convertir!</button>
     <div class="loader" id="loader"></div>
     <span id="error-container" class="error"></span>
-
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/codemirror/codemirror.js') }}"></script>
+    <script src="{{ asset('js/codemirror/active-line.js') }}"></script>
+    <script src="{{ asset('js/codemirror/sql.js') }}"></script>
     <script>
         let editor = CodeMirror.fromTextArea(document.getElementById("maple_editor"), {
             lineNumbers: true,

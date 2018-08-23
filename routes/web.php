@@ -20,7 +20,8 @@ Route::get('/maple', function () {
 })->name('trial');
 
 Route::get('/maple/docs', function () {
-    return response()->file(public_path() . '/docs/maple_user_manual.pdf');
+    return view('maple_manual', ['title' => 'Manual de usuario - Maple - SQLess']);
+//    return response()->file(public_path() . '/docs/maple_user_manual.pdf');
 });
 
 Route::post('/maple', 'MapleController@parse');
