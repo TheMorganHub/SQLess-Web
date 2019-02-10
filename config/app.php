@@ -103,6 +103,7 @@ return [
     | will not be safe. Please do this before deploying an application!
     |
     */
+    //base64_decode('') a valor en env
 
     'key' => env('APP_KEY'),
 

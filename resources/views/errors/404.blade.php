@@ -30,7 +30,7 @@
          id="sqless_logo_404">
     <div id="volver">
         La página no pudo ser encontrada.
-        <form action="https://sqless.ddns.net/">
+        <form action="/">
             <input id="btn-volver" type="submit" value="Click aquí para volver a home" class="btn btn-dark"/>
         </form>
     </div>

@@ -36,7 +36,7 @@
         </ul>
         <h2>Maple</h2>
         <ul>
-            <li><a href="https://sqless.ddns.net/maple/docs">Docs</a></li>
+            <li><a href="/maple/docs">Docs</a></li>
             {{--se accede a la ruta mediante named routes--}}
             <li><a href="{{ route('trial') }}">Try it!</a></li>
         </ul>

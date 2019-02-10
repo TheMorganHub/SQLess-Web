@@ -95,7 +95,7 @@
             <div class="col-sm-3">
                 <nav id="toc" data-toggle="toc" class="sticky-top">
                     <div class="box">
-                        <a href="/" title="Go home"><img src="https://sqless.ddns.net/img/Maple-logo.png"
+                        <a href="/" title="Go home"><img src="/img/Maple-logo.png"
                                                          alt="SQLess logo" id="logo"></a>
                         <div id="title">Maple</div>
                     </div>
