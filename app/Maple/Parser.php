@@ -295,6 +295,33 @@ class Parser {
         }
     }
 
+    private function filterEnumLikeColumns($columnDefinitions) {
+        $newDefinitions = array();
+        $enumStarted = false;
+        $enumParts = '';
+        $addComma = false;
+        foreach ($columnDefinitions as $def) {
+            if (preg_match("/enum*.\('/", $def) || preg_match("/set*.\('/", $def)) {
+                $enumStarted = true;
+            }
+
+            if ($enumStarted) {
+                $enumParts .= ($addComma ? ', ' : '') . $def;
+                $addComma = true;
+            } else {
+                $newDefinitions[] = $def;
+            }
+
+            if (Utils::str_contains($def, "')")) {
+                $enumStarted = false;
+                $addComma = false;
+                $newDefinitions[] = $enumParts;
+                $enumParts = '';
+            }
+        }
+        return $newDefinitions;
+    }
+
     private function procesarCreateTable() {
         $table = $this->tablas[0];
         $tableNameNoQuot = Utils::unquote($table);
@@ -308,7 +335,7 @@ class Parser {
         $joins = '';
         $defaultValues = [];
         if (!Utils::str_is_empty($columnSegment)) { //la sentencia tiene columnas
-            $colDefinitions = explode(',', $columnSegment); //ex: nombre varchar(255)
+            $colDefinitions = $this->filterEnumLikeColumns(explode(',', $columnSegment)); //ex: nombre varchar(255)
             $colNames = [];
             $colDefinitionsOnly = [];
             foreach ($colDefinitions as $colDefinition) {
