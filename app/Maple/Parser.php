@@ -301,7 +301,7 @@ class Parser {
         $enumParts = '';
         $addComma = false;
         foreach ($columnDefinitions as $def) {
-            if (preg_match("/enum*.\('/", $def) || preg_match("/set*.\('/", $def)) {
+            if (preg_match("/enum*.\('/i", $def) || preg_match("/set*.\('/i", $def)) {
                 $enumStarted = true;
             }
 
