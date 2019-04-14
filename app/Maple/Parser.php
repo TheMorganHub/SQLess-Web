@@ -148,10 +148,20 @@ class Parser {
      * Maple hace uso de símbolos propios para denotar orden (ORDER BY) y agrupación (GROUP BY). Estos símbolos son:<br>
      * *: GROUP BY <br>
      * ^: ORDER BY
+     * @param bool $parseOpBefore
      */
-    private function parseColumnas() {
+    private function parseColumnas($parseOpBefore = false) {
+        if ($parseOpBefore) {
+            $this->parseOp();
+        }
         $this->columnas = array();
-        if (preg_match_all('/(\^|\*|\^\*|\*\^|\s)(([A-Za-z]+\.\w+)|(\w*[A-Za-z]\w*)|(\w+\(.*?\)))[,|;|\s]/', $this->maple_statement_no_conds, $matches)) {
+        $noValuesStatement = $this->maple_statement_no_conds;
+
+        //remuevo porción de sentencia con los valores para no confundir al regex con las columnas
+        if ($this->op == '<' || $this->op == '<<') {
+            $noValuesStatement = substr($this->maple_statement_no_conds, 0, strrpos($this->maple_statement_no_conds, $this->op)) . ' ';
+        }
+        if (preg_match_all('/[\^|\*|\^\*|\*\^|\s](([A-Za-z]+\.\w+)|(\w*[A-Za-z]\w*)|(\w+\(.*?\)))[,|;|\s]/', $noValuesStatement, $matches)) {
             foreach ($matches[0] as $match) {
                 $columna = trim(str_replace(',', '', $match));
                 $columna = $this->addQuotToColumnName($columna);
@@ -241,9 +251,10 @@ class Parser {
         $this->parseTablas();
         if ($this->modo === 2) {
             $this->parseCondicionales();
-            $this->parseColumnas();
+            $this->parseColumnas(true);
+        } else {
+            $this->parseOp();
         }
-        $this->parseOp();
         $this->parseFunctions();
 
         if (empty($this->op)) {
