@@ -306,7 +306,7 @@ class Parser {
             }
 
             if ($enumStarted) {
-                $enumParts .= ($addComma ? ', ' : '') . $def;
+                $enumParts .= ($addComma ? ', ' : '') . trim($def);
                 $addComma = true;
             } else {
                 $newDefinitions[] = $def;
