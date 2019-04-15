@@ -44,6 +44,7 @@
         <ul>
             <li><a href="https://github.com/TheMorganHub/SQLess">SQLess</a></li>
             <li><a href="https://github.com/TheMorganHub/SQLess-Mobile">SQLess mobile</a></li>
+            <li><a href="https://github.com/TheMorganHub/SQLess-Web">SQLess web</a></li>
         </ul>
     </div>
 @endsection
