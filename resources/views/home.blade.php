@@ -31,8 +31,8 @@
         </div>
         <h2>Releases</h2>
         <ul>
-            <li><a href="https://drive.google.com/open?id=1nCWjkFOs39kf4KWaCKt-Yoitd1YrDdmv">SQLess JAR</a></li>
-            <li><a href="https://drive.google.com/open?id=1XI58ReZNKi_R7RYy7HDLRXhgnaq-Syop">SQLess APK</a></li>
+            <li><a href="/downloads/sqless_stable.jar">SQLess JAR</a></li>
+            <li><a href="/downloads/sqless_mobile_stable.apk">SQLess APK</a></li>
         </ul>
         <h2>Maple</h2>
         <ul>
