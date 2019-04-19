@@ -32,7 +32,7 @@
         <h2>Releases</h2>
         <ul>
             <li><a href="/downloads/sqless_stable.jar">SQLess JAR</a></li>
-            <li><a href="/downloads/sqless_mobile_stable.apk">SQLess APK</a></li>
+            <li><a href="/downloads/sqless_mobile_stable.zip">SQLess APK</a></li>
         </ul>
         <h2>Maple</h2>
         <ul>
