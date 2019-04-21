@@ -31,8 +31,8 @@
         </div>
         <h2>Releases</h2>
         <ul>
-            <li><a href="/downloads/desktop">SQLess JAR</a></li>
-            <li><a href="/downloads/mobile">SQLess APK</a></li>
+            <li><a href="/downloads/desktop">SQLess for desktop</a></li>
+            <li><a href="/downloads/mobile">SQLess for Android</a></li>
         </ul>
         <h2>Maple</h2>
         <ul>
