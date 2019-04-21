@@ -21,7 +21,8 @@ Route::get('/maple', function () {
 
 Route::get('/maple/docs', function () {
     return view('maple_manual', ['title' => 'Manual de usuario - Maple - SQLess']);
-//    return response()->file(public_path() . '/docs/maple_user_manual.pdf');
 });
+
+Route::get('/downloads/{platform}', 'DownloadsController@action');
 
 Route::post('/maple', 'MapleController@parse');
