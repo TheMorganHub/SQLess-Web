@@ -266,7 +266,7 @@
                     editor.setValue("personas( \n" +
                         "nombre varchar, \n" +
                         "apellido varchar,\n" +
-                        "telefono? varchar;");
+                        "telefono? varchar\n);");
                     break;
                 case 'create_with_joins':
                     // editor.setValue("($Personas) + \n" +
