@@ -39,6 +39,7 @@
             <li><a href="/maple/docs">Docs</a></li>
             {{--se accede a la ruta mediante named routes--}}
             <li><a href="{{ route('trial') }}">Try it!</a></li>
+            <li><a href="/maple2">Try Maple 2!</a></li>
         </ul>
         <h2>GitHub</h2>
         <ul>

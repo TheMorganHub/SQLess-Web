@@ -19,6 +19,10 @@ Route::get('/maple', function () {
     return view('maple_trial', ['title' => 'Try Maple - SQLess']);
 })->name('trial');
 
+Route::get('/maple2', function () {
+   return view('maple_2_trial', ['title' => 'Try Maple 2']);
+});
+
 Route::get('/maple/docs', function () {
     return view('maple_manual', ['title' => 'Manual de usuario - Maple - SQLess']);
 });
@@ -26,3 +30,5 @@ Route::get('/maple/docs', function () {
 Route::get('/downloads/{platform}', 'DownloadsController@action');
 
 Route::post('/maple', 'MapleController@parse');
+
+Route::post('/maple2', 'Maple2Controller@call');
