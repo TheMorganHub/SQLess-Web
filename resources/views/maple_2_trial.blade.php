@@ -345,15 +345,17 @@
                 url: '/maple2',
                 type: 'post',
                 data: {maple_statement: editor.getValue(), _token: '{{ csrf_token() }}'},
-                timeout: 3000
+                timeout: 17000
             }).done(function (response) {
                 if ('sql_from_maple' in response) {
-                    sqlEditor.setValue(response['sql_from_maple']);
+                    sqlEditor.setValue(response['sql_from_maple'].trim());
                 } else if ('err' in response) {
                     errorField.text(response['err']);
                 }
-            }).fail(function (err) {
-                console.log(err);
+            }).fail(function (jqXHR, textStatus) {
+                if (textStatus === 'timeout') {
+                    errorField.text("Request to Maple web service timed out. Please try again.");
+                }
             }).always(function () {
                 btnSubmit.prop('disabled', false);
                 loader.css('display', 'none');
