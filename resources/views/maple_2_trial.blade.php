@@ -56,7 +56,8 @@
 
         .error {
             padding: 10px;
-            color: #ff3c38;
+            font-family: monospace;
+            color: #b90d0d;
         }
 
         .editor-title-responsive {
