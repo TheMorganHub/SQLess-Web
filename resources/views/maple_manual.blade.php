@@ -157,7 +157,6 @@
                 </p>
                 <?php
                 echo_code_example('$Personas ? nombre = \'John\'', 'SELECT * FROM `Personas` WHERE nombre = \'John\';');
-                echo_code_example('$Personas ? nombre = \'John\'', 'SELECT * FROM `Personas` WHERE nombre = \'John\';');
                 echo_code_example('$Personas > nombre, apellido ? edad > 18', 'SELECT `nombre`, `apellido` FROM `Personas` WHERE edad > 18;');
                 echo_code_example('$Personas > nombre, apellido ? nombre LIKE \'%on\'', 'SELECT `nombre`, `apellido` FROM `Personas` WHERE nombre LIKE \'%on\';');
                 ?>
@@ -211,7 +210,7 @@
                     unión. Es necesario utilizar este tipo si no deseamos seguir la nomenclatura descripta
                     anteriormente.
                 </p>
-                <?php echo_code_example('$Personas > <role_id = id_roles> $Roles', 'SELECT * FROM `Personas` INNER JOIN `Roles` ON Personas.role_id = Roles.id_roles;') ?>
+                <?php echo_code_example('$Personas > ' . htmlspecialchars("<role_id = id_roles>") . ' $Roles', 'SELECT * FROM `Personas` INNER JOIN `Roles` ON Personas.role_id = Roles.id_roles;') ?>
                 <p>
                     Como se puede ver, la unión se llevará a cabo entre la columna <code>role_id</code> en la tabla
                     <code>Personas</code> y <code>id_roles</code> en la tabla <code>Roles</code>.
