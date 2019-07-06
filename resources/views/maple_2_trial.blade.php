@@ -141,7 +141,8 @@
         <a class="dropdown-item" href="javascript:createActionEvent('create_simple')">Simple</a>
         <a class="dropdown-item"
            href="javascript:createActionEvent('create_with_nullable')">Simple with nullable column</a>
-        <a class="dropdown-item" href="javascript:createActionEvent('create_with_joins')">With Join</a>
+        <a class="dropdown-item" href="javascript:createActionEvent('create_with_foreign_key')">With Foreign key (default)</a>
+        <a class="dropdown-item" href="javascript:createActionEvent('create_with_custom_fk_mode')">With Foreign key (custom mode)</a>
         <a class="dropdown-item" href="javascript:createActionEvent('create_with_default_value')">With default value</a>
     </span>
     <button class="btn dropdown-toggle" type="button" id="createMenuButton" data-toggle="dropdown" aria-haspopup="true"
@@ -270,12 +271,20 @@
                         "apellido varchar,\n" +
                         "?telefono varchar\n);");
                     break;
-                case 'create_with_joins':
-                    editor.setValue("personas(" +
+                case 'create_with_foreign_key':
+                    editor.setValue("personas(\n" +
+                        "nombre varchar,\n" +
+                        "apellido varchar,\n" +
+                        "telefono varchar,\n" +
+                        "ciudad\n" +
+                        ");");
+                    break;
+                case 'create_with_custom_fk_mode':
+                    editor.setValue("personas(\n" +
                         "nombre varchar,\n" +
                         "apellido varchar,\n" +
                         "nombre varchar,\n" +
-                        "ciudad\n" +
+                        "ciudad (on update cascade on delete cascade)\n" +
                         ");");
                     break;
                 case 'create_with_default_value':
