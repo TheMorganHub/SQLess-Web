@@ -142,7 +142,7 @@
         <a class="dropdown-item"
            href="javascript:createActionEvent('create_with_nullable')">Simple with nullable column</a>
         <a class="dropdown-item" href="javascript:createActionEvent('create_with_joins')">With Join</a>
-        <a class="dropdown-item" href="javascript:createActionEvent('create_with_join_and_default_value')">With Join and custom default value</a>
+        <a class="dropdown-item" href="javascript:createActionEvent('create_with_default_value')">With default value</a>
     </span>
     <button class="btn dropdown-toggle" type="button" id="createMenuButton" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
@@ -160,28 +160,28 @@
         UPDATE
     </button>
 </span>
-{{--    <span class="dropdown">--}}
-{{--    <span class="dropdown-menu" aria-labelledby="deleteMenuButton">--}}
-{{--        <a class="dropdown-item"--}}
-{{--           href="javascript:deleteActionEvent('delete_with_conditionals')">Borrar con condicional</a>--}}
-{{--        <a class="dropdown-item" href="javascript:deleteActionEvent('truncate')">Truncate</a>--}}
-{{--    </span>--}}
-{{--    <button class="btn dropdown-toggle" type="button" id="deleteMenuButton" data-toggle="dropdown" aria-haspopup="true"--}}
-{{--            aria-expanded="false">--}}
-{{--        DELETE--}}
-{{--    </button>--}}
-{{--</span>--}}
-{{--    <span class="dropdown">--}}
-{{--    <span class="dropdown-menu" aria-labelledby="alterTableButton">--}}
-{{--        <a class="dropdown-item" href="javascript:alterTableActionEvent('add')">Agregar columna</a>--}}
-{{--        <a class="dropdown-item" href="javascript:alterTableActionEvent('modify')">Modificar columna</a>--}}
-{{--        <a class="dropdown-item" href="javascript:alterTableActionEvent('drop')">Eliminar columna</a>--}}
-{{--    </span>--}}
-{{--    <button class="btn dropdown-toggle" type="button" id="alterTableButton" data-toggle="dropdown" aria-haspopup="true"--}}
-{{--            aria-expanded="false">--}}
-{{--        ALTER TABLE--}}
-{{--    </button>--}}
-{{--</span>--}}
+    {{--    <span class="dropdown">--}}
+    {{--    <span class="dropdown-menu" aria-labelledby="deleteMenuButton">--}}
+    {{--        <a class="dropdown-item"--}}
+    {{--           href="javascript:deleteActionEvent('delete_with_conditionals')">Borrar con condicional</a>--}}
+    {{--        <a class="dropdown-item" href="javascript:deleteActionEvent('truncate')">Truncate</a>--}}
+    {{--    </span>--}}
+    {{--    <button class="btn dropdown-toggle" type="button" id="deleteMenuButton" data-toggle="dropdown" aria-haspopup="true"--}}
+    {{--            aria-expanded="false">--}}
+    {{--        DELETE--}}
+    {{--    </button>--}}
+    {{--</span>--}}
+    {{--    <span class="dropdown">--}}
+    {{--    <span class="dropdown-menu" aria-labelledby="alterTableButton">--}}
+    {{--        <a class="dropdown-item" href="javascript:alterTableActionEvent('add')">Agregar columna</a>--}}
+    {{--        <a class="dropdown-item" href="javascript:alterTableActionEvent('modify')">Modificar columna</a>--}}
+    {{--        <a class="dropdown-item" href="javascript:alterTableActionEvent('drop')">Eliminar columna</a>--}}
+    {{--    </span>--}}
+    {{--    <button class="btn dropdown-toggle" type="button" id="alterTableButton" data-toggle="dropdown" aria-haspopup="true"--}}
+    {{--            aria-expanded="false">--}}
+    {{--        ALTER TABLE--}}
+    {{--    </button>--}}
+    {{--</span>--}}
     <div id='wrapper'>
         <div class="editor-title">
             Maple
@@ -237,7 +237,7 @@
                 case 'innerjoin':
                     editor.setValue("personas p -> <> roles r ON p.id_roles = r.id;");
                     break;
-                    //TODO: subqueries, implicit joins
+                //TODO: subqueries, implicit joins
             }
             sqlEditor.setValue("");
             document.getElementById("btn_submit").focus();
@@ -267,21 +267,24 @@
                     editor.setValue("personas( \n" +
                         "nombre varchar, \n" +
                         "apellido varchar,\n" +
-                        "telefono? varchar\n);");
+                        "?telefono varchar\n);");
                     break;
                 case 'create_with_joins':
-                    // editor.setValue("($Personas) + \n" +
-                    //     "nombre varchar(255), \n" +
-                    //     "apellido varchar(255), \n" +
-                    //     "telefono? varchar(255) \n" +
-                    //     "<> $Roles;");
+                    editor.setValue("personas(" +
+                        "nombre varchar,\n" +
+                        "apellido varchar,\n" +
+                        "nombre varchar,\n" +
+                        "ciudad\n" +
+                        ");");
                     break;
-                case 'create_with_join_and_default_value':
-                    // editor.setValue("($Personas) + \n" +
-                    //     "nombre varchar(255), \n" +
-                    //     "apellido varchar(255), \n" +
-                    //     "telefono? varchar(255) \n" +
-                    //     "<5> $Roles;");
+                case 'create_with_default_value':
+                    editor.setValue(
+                        "personas( \n" +
+                        "nombre varchar, \n" +
+                        "apellido varchar,\n" +
+                        "telefono varchar '11645455555'\n" +
+                        ");"
+                    );
                     break;
             }
             sqlEditor.setValue("");
@@ -321,14 +324,14 @@
         }
 
         function deleteActionEvent(deleteType) {
-            // switch (deleteType) {
-            //     case 'delete_with_conditionals':
-            //         editor.setValue("$Personas [x] ? nombre = 'John';");
-            //         break;
-            //     case 'truncate':
-            //         editor.setValue("$Personas [x];");
-            //         break;
-            // }
+            switch (deleteType) {
+                case 'delete_with_conditionals':
+                    editor.setValue("personas <- ? id = 5");
+                    break;
+                case 'truncate':
+                    editor.setValue("personas <-;");
+                    break;
+            }
             sqlEditor.setValue("");
             document.getElementById("btn_submit").focus();
         }
