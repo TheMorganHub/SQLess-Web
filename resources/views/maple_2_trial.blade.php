@@ -283,7 +283,7 @@
                     editor.setValue("personas(\n" +
                         "nombre varchar,\n" +
                         "apellido varchar,\n" +
-                        "nombre varchar,\n" +
+                        "telefono varchar,\n" +
                         "ciudad (on update cascade on delete cascade)\n" +
                         ");");
                     break;
