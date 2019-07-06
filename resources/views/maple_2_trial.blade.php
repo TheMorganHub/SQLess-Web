@@ -180,7 +180,7 @@
         <button class="btn dropdown-toggle" type="button" id="alterTableButton" data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false">
-            ALTER TABLE
+            PROCEDURES
         </button>
     </span>
     <div id='wrapper'>
