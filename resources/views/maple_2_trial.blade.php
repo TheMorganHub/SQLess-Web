@@ -172,17 +172,17 @@
             DELETE
         </button>
     </span>
-    {{--    <span class="dropdown">--}}
-    {{--    <span class="dropdown-menu" aria-labelledby="alterTableButton">--}}
-    {{--        <a class="dropdown-item" href="javascript:alterTableActionEvent('add')">Agregar columna</a>--}}
-    {{--        <a class="dropdown-item" href="javascript:alterTableActionEvent('modify')">Modificar columna</a>--}}
-    {{--        <a class="dropdown-item" href="javascript:alterTableActionEvent('drop')">Eliminar columna</a>--}}
-    {{--    </span>--}}
-    {{--    <button class="btn dropdown-toggle" type="button" id="alterTableButton" data-toggle="dropdown" aria-haspopup="true"--}}
-    {{--            aria-expanded="false">--}}
-    {{--        ALTER TABLE--}}
-    {{--    </button>--}}
-    {{--</span>--}}
+    <span class="dropdown">
+        <span class="dropdown-menu" aria-labelledby="procedureButton">
+            <a class="dropdown-item"
+               href="javascript:procedureActionEvent('procedure_conditionals')">Con condicionales</a>
+        </span>
+        <button class="btn dropdown-toggle" type="button" id="alterTableButton" data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false">
+            ALTER TABLE
+        </button>
+    </span>
     <div id='wrapper'>
         <div class="editor-title">
             Maple
@@ -302,6 +302,24 @@
                     break;
                 case 'update_with_conditionals':
                     editor.setValue("personas(estado, dinero) <<- 'Menor', 0 ? edad < 18;");
+                    break;
+            }
+            sqlEditor.setValue("");
+            document.getElementById("btn_submit").focus();
+        }
+
+        function procedureActionEvent(procedureType) {
+            switch (procedureType) {
+                case 'procedure_conditionals':
+                    editor.setValue("procedure checkNota(int nota) {\n" +
+                        "\tif (nota >= 4 and nota <= 10) {\n" +
+                        "    \tprint 'Aprobado';\n" +
+                        "    } elseif (nota >= 1) {\n" +
+                        "    \tprint 'Reprobado';\n" +
+                        "    } else {\n" +
+                        "    \tprint 'Nota inválida';\n" +
+                        "    }\n" +
+                        "}");
                     break;
             }
             sqlEditor.setValue("");
