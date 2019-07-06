@@ -160,17 +160,18 @@
         UPDATE
     </button>
 </span>
-    {{--    <span class="dropdown">--}}
-    {{--    <span class="dropdown-menu" aria-labelledby="deleteMenuButton">--}}
-    {{--        <a class="dropdown-item"--}}
-    {{--           href="javascript:deleteActionEvent('delete_with_conditionals')">Borrar con condicional</a>--}}
-    {{--        <a class="dropdown-item" href="javascript:deleteActionEvent('truncate')">Truncate</a>--}}
-    {{--    </span>--}}
-    {{--    <button class="btn dropdown-toggle" type="button" id="deleteMenuButton" data-toggle="dropdown" aria-haspopup="true"--}}
-    {{--            aria-expanded="false">--}}
-    {{--        DELETE--}}
-    {{--    </button>--}}
-    {{--</span>--}}
+    <span class="dropdown">
+        <span class="dropdown-menu" aria-labelledby="deleteMenuButton">
+            <a class="dropdown-item"
+               href="javascript:deleteActionEvent('delete_with_conditionals')">Borrar con condicional</a>
+            <a class="dropdown-item" href="javascript:deleteActionEvent('truncate')">Truncate</a>
+        </span>
+        <button class="btn dropdown-toggle" type="button" id="deleteMenuButton" data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false">
+            DELETE
+        </button>
+    </span>
     {{--    <span class="dropdown">--}}
     {{--    <span class="dropdown-menu" aria-labelledby="alterTableButton">--}}
     {{--        <a class="dropdown-item" href="javascript:alterTableActionEvent('add')">Agregar columna</a>--}}
