@@ -23,15 +23,6 @@
             padding-bottom: 10px;
         }
     </style>
-    <?php
-    $ip = getenv('HTTP_CLIENT_IP') ?:
-        getenv('HTTP_X_FORWARDED_FOR') ?:
-            getenv('HTTP_X_FORWARDED') ?:
-                getenv('HTTP_FORWARDED_FOR') ?:
-                    getenv('HTTP_FORWARDED') ?:
-                        getenv('REMOTE_ADDR');
-    echo $ip;
-    ?>
     <div class="container">
         <div class="box">
             <img src="{{ asset('img/SQLess-logo.png') }}" alt="">
